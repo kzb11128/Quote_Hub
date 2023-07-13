@@ -3,7 +3,7 @@
         "name": "Todd Toddson",
         "email": "ToddTheMan@example.com",
         "password": "notpassword",
-        "quotes": [1,2,4,7],
+        "quotes": [1,2,4,7]
     },
     {
         "name": "Jeff Jefferson",
