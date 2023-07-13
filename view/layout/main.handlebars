@@ -1,0 +1,35 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Quote Hub</title>
+      <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+        <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.min.js"></script>
+</head>
+
+<body>
+<!-- body div for CSS -->
+<div class="flex flex-col w-full h-screen my-auto items-center overflow-auto bg-gradient-to-br from-[#3AAFA9] to-[#2a8a85] via-cyan-100">
+
+<!-- header div CSS-->
+<div class="text-4xl font-bold my-5 mx-5">
+    <header>
+
+        <h1 id="title" class="text-4xl font-bold flex justify-center">
+            Quote<span class="font-bold text-green-700">Hub</span>
+          </h1>
+        <h2 class="hidden sm:block text-2xl font-bold justify-center">Listen, Learn, and Be Inspired: Text-to-Speech with Daily Quotes</h2>  
+    </header>
+</div>
+
+<main id="main-container" class="grid w-7/12 place-items-center"></main>
+        {{{ body }}}
+</main>
+
+</body>
+</html>
