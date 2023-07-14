@@ -13,4 +13,4 @@ User.hasMany(UserQuote, {
   onDelete: 'CASCADE'
 });
 
-module.exports = { User, Quote };
+module.exports = { User, Quote, UserQuote };
