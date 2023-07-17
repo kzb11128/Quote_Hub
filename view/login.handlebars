@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Login</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <!-- body div for CSS -->
-    <div class="flex flex-col w-full h-screen my-auto items-center overflow-auto bg-gradient-to-br from-[#3AAFA9] to-[#2a8a85] via-cyan-100">
-  <!-- header div CSS-->
-    <header>
-        <h1 id="title" class="text-4xl font-bold flex justify-center">
-            <span class="text-white">Quote</span> Hub
-          </h1>
-    </header>
-  
-<div class="container">
-  <div class="w-1/3">
-    <h2 class="text-3xl mb-6">Login</h2>
-    <form id="login-form" action="view/user.handlebars" method="POST">
+    <div class="container resize-none rounded-md block p-2.5 w-1/2 max-w-sm sm:w-1/3 sm:max-w-xs h-80 text-sm md:text-base text-gray-900 bg-white rounded-lg border border-gray-300 shadow-md shadow-[#542745]/40 focus:ring-blue-500 focus:border-blue-500 mt-6 left-0 sm:left-1/2 sm:transform sm:-translate-x-1/2" style="width: 150%;">
       <div class="mb-4">
         <label for="username" class="block">Username:</label>
         <input type="text" id="username" name="username" required class="w-full border border-gray-300 rounded px-3 py-2">
@@ -26,14 +7,8 @@
         <label for="password" class="block">Password:</label>
         <input type="password" id="password" name="password" required class="w-full border border-gray-300 rounded px-3 py-2">
       </div>
-      <div>
-        <input type="submit" value="Login" class="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer">
+      <div class="flex justify-center">
+        <input type="submit" value="Login" class="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer ">
       </div>
-      <p class="text-sm text-gray-700 mt-4">New to Quote Hub? <a href="/new-account" class="text-blue-500 hover:underline">Sign up</a></p>
-    </form>
-  </div>
-</div>
-
-      
-</body>
-</html>
+      <p class="text-sm text-gray-700 mt-4">New to Quote Hub? <a href="view/newaccount.handlebars" class="text-blue-500 hover:underline">Sign up</a></p>
+    </div>
