@@ -1,14 +1,16 @@
 const User = require('./User');
 const Quote = require('./Quote');
+const UserQuote = require('./UserQuote');
 
-
-Quote.belongsTo(User, {
+// Quotes belong to multiple Users
+Quote.belongsToMany(UserQuote, {
   foreignKey: 'user_id',
 });
 
-User.hasMany(Quote, {
+// User can have multiple Quotes
+User.hasMany(UserQuote, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'
 });
 
-module.exports = { User, Quote };
+module.exports = { User, Quote, UserQuote };
