@@ -6,18 +6,11 @@ class UserQuote extends Model {}
 
 UserQuote.init(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
-    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
         key: 'id',
-        unqiue: false  
       }
     },
     quote_id: {
@@ -25,7 +18,6 @@ UserQuote.init(
       references: {
         model: 'quote',
         key: 'id',
-        unqiue: false
       }
     }
   },
