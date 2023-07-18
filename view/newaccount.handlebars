@@ -27,7 +27,7 @@
                             </div>
                                       <div class="flex flex-wrap justify-start mt-3 ml-4 p-1">
                               <ul>
-                                <li class="flex items-center py-1">
+                                   <li class="flex items-center py-1">
                                   <div :class="{'bg-green-200 text-green-700': password == password_confirm && password.length > 0, 'bg-red-200 text-red-700':password != password_confirm || password.length == 0}"
                                        class="rounded-full p-1 fill-current">
                                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -47,7 +47,26 @@
                                   </div>
                                   <span :class="{'text-green-700': password.length > 7, 'text-red-700':password.length < 7 }" class="font-medium text-sm ml-3" x-text="password.length > 7 ? 'The minimum length is reached' : 'At least 8 characters required' "></span>
                                 </li>
-
+                                <li class="flex items-center py-1">
+                                  <div :class="{'bg-green-200 text-green-700 valid': password.match(/[A-Z]/), 'bg-red-200 text-red-700 invalid': !password.match(/[A-Z]/)}"
+                                       class="rounded-full p-1 fill-current">
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                      <path x-show="password.match(/[A-Z]/)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                      <path x-show="!password.match(/[A-Z]/)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                  </div>
+                                  <span :class="{'valid text-green-700': password.match(/[A-Z]/), 'invalid text-red-700': !password.match(/[A-Z]/)}" class="font-medium text-sm ml-3" x-text="password.match(/[A-Z]/) ? 'Contains at least one capital letter' : 'Requires at least one capital letter'"></span>
+                                </li>
+                                <li class="flex items-center py-1">
+                                  <div :class="{'bg-green-200 text-green-700 valid': password.match(/[0-9]/), 'bg-red-200 text-red-700 invalid': !password.match(/[0-9]/)}"
+                                       class="rounded-full p-1 fill-current">
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                      <path x-show="password.match(/[0-9]/)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                      <path x-show="!password.match(/[0-9]/)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                  </div>
+                                  <span :class="{'valid text-green-700': password.match(/[0-9]/), 'invalid text-red-700': !password.match(/[0-9]/)}" class="font-medium text-sm ml-3" x-text="password.match(/[0-9]/) ? 'Contains at least one number' : 'Requires at least one number'"></span>
+                                </li>
                               </ul>
                               </div>
                             </div>
