@@ -5,14 +5,8 @@ const withAuth = require('../../utils/auth');
 // Create a new user quote from quotes table
 router.post('/', withAuth, async (req, res) => {
   try {
-    const { quote_id, user_id } = req.body;
-
-    const userData = await User.findOne({ 
-      where: 
-      { 
-        id: user_id 
-      } 
-    });
+    const { quote_id } = req.body;
+    const user_id = req.session.user_id;
 
     const quoteData = await Quote.findOne({ 
       where: 
@@ -25,7 +19,7 @@ router.post('/', withAuth, async (req, res) => {
       quote_id, user_id
     });
 
-    res.status(200).json(userQuoteData);
+    res.status(200).json(quoteData);
   } catch (err) {
     res.status(400).json(err);
   }
