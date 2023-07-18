@@ -1,26 +1,50 @@
 const router = require('express').Router();
-const { Quote } = require('../../models');
+const { User, Quote, UserQuote } = require('../../models');
+const withAuth = require('../../utils/auth');
 
-router.get('/', async (req, res) => {
+// Create a new user quote from quotes table
+router.post('/', withAuth, async (req, res) => {
   try {
-    const quoteData = await Quote.findAll();
-    res.status(200).json(quoteData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-  });
+    const { quote_id, user_id } = req.body;
 
-router.get('/:id', async (req, res) => {
+    const userData = await User.findOne({ 
+      where: 
+      { 
+        id: user_id 
+      } 
+    });
+
+    const quoteData = await Quote.findOne({ 
+      where: 
+      { 
+        id: quote_id 
+      } 
+    });
+
+    const userQuoteData = await UserQuote.create({
+      quote_id, user_id
+    });
+
+    res.status(200).json(userQuoteData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+//render a quote by its id
+router.get('/quote/:id', withAuth, async (req, res) => {
   try {
     const quoteData = await Quote.findByPk(req.params.id);
-    if (!quoteData){
-      res.status(404).json({message: 'No quote found with this id!'});
-      return;
-    }
 
-    res.status(200).json(quoteData);
+    const quote = quoteData.get({ plain: true });
+
+    res.render('quote', {
+      ...quote,
+      logged_in: req.session.logged_in
+    });
   } catch (err) {
-    res.status(500).json(err)
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
