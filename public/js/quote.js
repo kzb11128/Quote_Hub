@@ -1,10 +1,11 @@
 // Generate and Save the quote as a UserQuote
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
   const saveQuoteButton = document.getElementById('TBD');
   const generateQuoteButton = document.getElementById('TBD');
   const generatedQuoteTextElement = document.getElementById('TBD');
   const generatedQuoteAuthorElement = document.getElementById('TBD');
   const savedQuotesContainer = document.getElementById('TBD');
+  const generatedQuoteIdElement = document.getElementById('TBD');
 
 
   // Add an event listener to the 'Generate Quote' button
@@ -25,6 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Display the random quote on the screen
       generatedQuoteTextElement.textContent = randomQuote.text;
       generatedQuoteAuthorElement.textContent = randomQuote.author;
+      generatedQuoteIdElement.textContent = randomQuote.id;
+
     } catch (error) {
       console.error(error);
       alert('An error occurred while fetching the quote.');
@@ -41,16 +44,15 @@ document.addEventListener('DOMContentLoaded', () => {
   saveQuoteButton.addEventListener('click', async () => {
     try {
       // Get the generated quote text and author from the DOM
-      const generatedQuoteText = generatedQuoteTextElement.textContent;
-      const generatedQuoteAuthor = generatedQuoteAuthorElement.textContent;
+      const generatedQuoteId = generatedQuoteIdElement.textContent;
 
       // Make a POST request to the '/userquotes' endpoint to save the generated quote as UserQuote
-      const response = await fetch('/userquotes', {
+      const response = await fetch('/api/quotes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ quote_text: generatedQuoteText, author: generatedQuoteAuthor }),
+        body: JSON.stringify({ quote_id: generatedQuoteId }),
       });
 
       // Handle the response
@@ -70,4 +72,4 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('An error occurred while saving the quote.');
     }
   });
-});
+// });
