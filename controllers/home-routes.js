@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
 });
 
 // If the user is already logged in, redirect the request to profile page
-router.get('/', (req, res) => {
+router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/profile');
     return;
@@ -73,7 +73,9 @@ router.get('/profile', withAuth, async (req, res) => {
       },
     });
     
-    const userData = await User.findByPk(req.session.user_id);
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+    });
     
     const userQuotes = userQuoteData.map((quote) => quote.get({ plain: true }));
     const user = userData.get({ plain: true });
