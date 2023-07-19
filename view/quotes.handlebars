@@ -1,92 +1,73 @@
-<div class="quote-container">
+<div id="random-quote-container" class="container mx-auto">
+  <div id="container mx-auto">
+    <h2 class="text-4xl mb-6">Brighten your day with a random quote!</h2>
+  </div>
+  <div
+    class="block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"
+  >
+    <h5
+      id="random-quote-author"
+      class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50"
+    >
+    </h5>
+    <p
+      id="random-quote-text"
+      class="mb-4 text-base text-neutral-600 dark:text-neutral-200"
+    >
+    </p>
+  </div>
+</div>
 
-  <div id="saved-quote-container">
-    <h2>Saved Quotes</h2>
-    <!-- For each quote in the array of quote objects -->
+<!-- Buttons section for get and save quotes -->
+<section
+  id="buttons"
+  class="flex flex-wrap justify-center text-sm md:text-base my-4 space-x-4"
+>
+  <!-- Get random quote button -->
+  <button
+    id="getbtn-random-quote"
+    class="btns bg-gray-300 hover:bg-green-500 text-gray-800 shadow-md shadow-[#542745]/40 mt-3 font-bold py-2 px-4 rounded"
+  >Get a Quote</button>
+  <!-- Save a random quote -->
+  <button
+    id="savebtn-random-quote"
+    class="btns bg-gray-300 shadow-md shadow-[#542745]/40 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mt-3"
+  >Save Quote</button>
+</section>
+
+<div id="saved-quote-container" class="container mx-auto">
+  <div id="container mx-auto">
+    <h2 class="text-4xl mb-6">Saved Quotes</h2>
+  </div>
+  <!-- For each quote in the array of quote objects -->
+  <div
+    class="block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"
+  >
     {{#each quotes as |quote|}}
-      <div class="saved-quote">
-        <p>
-          {{quote.quote_text}}.
-          {{quote.author}}
-        </p>
-      </div>
+      <h5
+        id="saved-quote-author"
+        class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50"
+      >
+        {{quote.author}}
+      </h5>
+      <p
+        id="saved-quote-text"
+        class="mb-4 text-base text-neutral-600 dark:text-neutral-200"
+      >
+        {{quote.quote_text}}
+      </p>
     {{/each}}
   </div>
-
-  <!-- area for random quotes -->
-  <div id="random-quote-container">
-    <!-- textarea for random quotes -->
-    <textarea
-      name="textInput"
-      id="textInput"
-      placeholder=""
-      cols="30"
-      rows="10"
-      required="required"
-      class="resize-none rounded-md block p-2.5 w-9/12 h-64 text-sm md:text-base text-gray-900 bg-white rounded-lg border border-gray-300 shadow-md shadow-[#542745]/40 focus:ring-blue-500 focus:border-blue-500 mt-6"
-    ></textarea>
-    <label for="textinput" class="text-sm font-semibold mt-3">Refresh the page
-      for a new quote</label>
-    <!-- Buttons section for get and save quotes -->
-    <section
-      id="buttons"
-      class="flex flex-wrap justify-center text-sm md:text-base my-4 space-x-4"
-    >
-      <!-- Get random quote button -->
-      <button
-        id="get-random-quote"
-        class="btns bg-gray-300 hover:bg-green-500 text-gray-800 shadow-md shadow-[#542745]/40 mt-3 font-bold py-2 px-4 rounded"
-      >Get a Quote</button>
-      <!-- Save a random quote -->
-      <button
-        id="copyQuote"
-        class="btns bg-gray-300 shadow-md shadow-[#542745]/40 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mt-3"
-      >Save Quote</button>
-    </section>
-  </div>
-
-  <!-- area to enter a quote -->
-  <div id="enter-quote-container">
-    <h2>
-      Enter your own quote to save!
-    </h2>
-    <form class="new-quote-form">
-      <label for="new_quote_text">
-        Quote Text:
-      </label>
-      <br />
-      <textarea id="new_quote_text" name="new_quote_text" rows="5" cols="30">
-        {{quote_text}}
-      </textarea>
-      <br />
-      <label for="quote_author">
-        Author:
-      </label>
-      <br />
-      <textarea id="quote_author" name="quote_author" rows="1" cols="30">
-        {{author}}
-      </textarea>
-      <br />
-      <label for="quote_category">
-        Category:
-      </label>
-      <br />
-      <textarea id="quote_category" name="quote_category" rows="2" cols="30">
-        {{category}}
-      </textarea>
-      <br />
-      <button type="submit" value="Submit">
-        Submit
-      </button>
-    </form>
-  </div>
 </div>
 
-<div class="clear saved quotes">
-  <button
-    class="btns bg-gray-300 shadow-md shadow-[#542745]/40 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mt-3"
-    id="clearQuotes"
-  >Clear Saved Quotes</button>
-</div>
-
-<script src="/js/add-quote.js"></script>
+<section
+  id="buttons"
+  class="flex flex-wrap justify-center text-sm md:text-base my-4 space-x-4"
+>
+  <div class="clear saved quotes">
+    <button
+      id="clearbtn-saved-quotes"
+      class="btns bg-gray-300 shadow-md shadow-[#542745]/40 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mt-3"
+    >Clear Saved Quotes</button>
+  </div>
+</section>
