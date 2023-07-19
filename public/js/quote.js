@@ -1,11 +1,10 @@
 // Generate and Save the quote as a UserQuote
-// document.addEventListener('DOMContentLoaded', () => {
-  const saveQuoteButton = document.getElementById('TBD');
-  const generateQuoteButton = document.getElementById('TBD');
-  const generatedQuoteTextElement = document.getElementById('TBD');
-  const generatedQuoteAuthorElement = document.getElementById('TBD');
-  const savedQuotesContainer = document.getElementById('TBD');
-  const generatedQuoteIdElement = document.getElementById('TBD');
+  const saveQuoteButton = document.querySelector('TBD');
+  const generateQuoteButton = document.querySelector('TBD');
+  const generatedQuoteTextElement = document.querySelector('TBD');
+  const generatedQuoteAuthorElement = document.querySelector('TBD');
+  const savedQuotesContainer = document.querySelector('TBD');
+  const generatedQuoteIdElement = document.querySelector('TBD');
 
 
   // Add an event listener to the 'Generate Quote' button
@@ -72,4 +71,3 @@
       alert('An error occurred while saving the quote.');
     }
   });
-// });
