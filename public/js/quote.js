@@ -1,9 +1,9 @@
 // Generate and Save the quote as a UserQuote
-  const saveQuoteButton = document.querySelector('TBD');
-  const generateQuoteButton = document.querySelector('TBD');
-  const generatedQuoteTextElement = document.querySelector('TBD');
-  const generatedQuoteAuthorElement = document.querySelector('TBD');
-  const savedQuotesContainer = document.querySelector('TBD');
+  const saveQuoteButton = document.querySelector('#savebtn-random-quote');
+  const generateQuoteButton = document.querySelector('#getbtn-random-quote');
+  const generatedQuoteTextElement = document.querySelector('#random-quote-text');
+  const generatedQuoteAuthorElement = document.querySelector('#random-quote-author');
+  const savedQuotesContainer = document.querySelector('#saved-quote-container');
   const generatedQuoteIdElement = document.querySelector('TBD');
 
 
