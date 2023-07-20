@@ -68,3 +68,29 @@
       opacity: 1;
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const quoteItems = document.querySelectorAll('.quote-item');
+      const duration = 5000; // Duration of each quote on the screen in milliseconds
+      const delay = 2000; // Delay between quote transitions in milliseconds
+
+      let currentIndex = 0;
+
+      function fadeItemIn(index) {
+        setTimeout(function () {
+          quoteItems[currentIndex].classList.remove('active');
+          quoteItems[index].classList.add('active');
+          currentIndex = index;
+
+          setTimeout(function () {
+            quoteItems[index].classList.remove('active');
+
+            const nextIndex = (index + 1) % quoteItems.length;
+            fadeItemIn(nextIndex);
+          }, duration);
+        }, delay);
+      }
+
+      fadeItemIn(1); // Start with the second quote item
+    });
+  </script>
