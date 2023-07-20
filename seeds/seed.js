@@ -13,7 +13,7 @@ const seedAll = async () => {
 
         const users = await User.bulkCreate(userSeedData);
         const quotes = await Quote.bulkCreate(quoteSeedData);
-
+        console.log(users[0].id)
 
         await UserQuote.bulkCreate([
             { user_id: users[0].id, quote_id: quotes[0].id },
