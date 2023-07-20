@@ -65,22 +65,30 @@ router.get('/newaccount', async (req, res) => {
 });
 
 // Profile page should get all user quotes from the database
-router.get('/profile', withAuth, async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const userQuoteData = await UserQuote.findAll({ 
-      where: { 
-        user_id: req.session.user_id 
+      where: {
+        user_id: req.params.id,
       },
+      // include: {
+      //   model: Quote,
+      //   where: {
+      //     id: quote_id,
+      //   }
+      // }
+      
     });
     
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-    });
+    // const userData = await User.findByPk(req.session.user_id, {
+    //   attributes: { exclude: ['password'] },
+    // });
     
-    const userQuotes = userQuoteData.map((quote) => quote.get({ plain: true }));
-    const user = userData.get({ plain: true });
+    // const userQuotes = userQuoteData.map((quote_id) => quote_id.get({ plain: true }));
+    // const user = userData.get({ plain: true });
 
-    res.render('profile', { user, userQuotes, logged_in: req.session.logged_in });
+    res.status(200).json(userQuoteData)
+    // res.render('profile', { user, userQuotes, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }

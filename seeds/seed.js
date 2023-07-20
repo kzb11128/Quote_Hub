@@ -1,19 +1,45 @@
 const sequelize = require('../config/connection');
 // Require models
-const { Quote, User } = require('../model');
+const { Quote, User, UserQuote } = require('../models');
 
 
 const quoteSeedData = require('./quoteSeedData.json');
 const userSeedData = require('./userSeedData.json');
 
 
-const seedDatabase = async () => {
-    await sequelize.sync({ force: true });
+const seedAll = async () => {
+    try{
+        await sequelize.sync({ force: true });
 
-    const users = await User.bulkCreate(userSeedData);
-    const quotes = await Quote.bulkCreate(quoteSeedData);
+        const users = await User.bulkCreate(userSeedData);
+        const quotes = await Quote.bulkCreate(quoteSeedData);
 
-    process.exit(0);
+
+        await UserQuote.bulkCreate([
+            { user_id: users[0].id, quote_id: quotes[0].id },
+            { user_id: users[0].id, quote_id: quotes[1].id },
+            { user_id: users[0].id, quote_id: quotes[2].id },
+            { user_id: users[1].id, quote_id: quotes[5].id },
+            { user_id: users[1].id, quote_id: quotes[6].id },
+            { user_id: users[1].id, quote_id: quotes[7].id },
+            { user_id: users[2].id, quote_id: quotes[3].id },
+            { user_id: users[2].id, quote_id: quotes[6].id },
+            { user_id: users[2].id, quote_id: quotes[9].id },
+            { user_id: users[3].id, quote_id: quotes[15].id },
+            { user_id: users[3].id, quote_id: quotes[16].id },
+            { user_id: users[3].id, quote_id: quotes[17].id },
+        ]);
+
+        console.log('Data seeding completed.');
+
+        await sequelize.close();
+
+        console.log('Connection closed.')
+        
+    } catch (error) {
+        console.error('Error seeding data: ', error)
+    }
+    
 };
 
-seedDatabase();
+seedAll();

@@ -2,25 +2,21 @@
     {
         "name": "Todd Toddson",
         "email": "ToddTheMan@example.com",
-        "password": "notpassword",
-        "quotes": [1,2,4,7]
+        "password": "notpassword"
     },
     {
         "name": "Jeff Jefferson",
         "email": "JustJeff@example.com",
-        "password": "notpassword",
-        "quotes": [5,2]
+        "password": "notpassword"
     },
     {
         "name": "Bill Billson",
         "email": "BowlingBill@example.com",
-        "password": "notpassword",
-        "quotes": [2,7,6]
+        "password": "notpassword"
     },
     {
         "name": "Mike Michealson",
         "email": "Mike@example.com",
-        "password": "notpassword",
-        "quotes": [9,6,3]
+        "password": "notpassword"
     }
 ]
