@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     
     const quotes = quoteData.map((quote) => quote.get({ plain: true }));
 
-    res.render('homepage', { quotes, logged_in: req.session.logged_in });
+    res.render('login', { quotes, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.render('profile', { user: userData.id, logged_in: true });
+      res.render('login', { user: userData.id, logged_in: true });
     });
 
   } catch (err) {
@@ -61,7 +61,7 @@ router.get('/newaccount', async (req, res) => {
     return;
   }
 
-  res.render('signup');
+  res.render('newaccount');
 });
 
 // Profile page should get all user quotes from the database
@@ -78,7 +78,7 @@ router.get('/profile', withAuth, async (req, res) => {
     const userQuotes = userQuoteData.map((quote) => quote.get({ plain: true }));
     const user = userData.get({ plain: true });
 
-    res.render('profile', { user, userQuotes, logged_in: req.session.logged_in });
+    res.render('quotes', { user, userQuotes, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }
