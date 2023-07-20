@@ -32,7 +32,7 @@ router.get('/quote/:id', withAuth, async (req, res) => {
 
     const quote = quoteData.get({ plain: true });
 
-    res.render('quote', {
+    res.render('quotes', {
       ...quote,
       logged_in: req.session.logged_in
     });
