@@ -4,7 +4,6 @@
   const generatedQuoteTextElement = document.querySelector('#random-quote-text');
   const generatedQuoteAuthorElement = document.querySelector('#random-quote-author');
   const savedQuotesContainer = document.querySelector('#saved-quote-container');
-  const generatedQuoteIdElement = document.querySelector('TBD');
 
 
   // Add an event listener to the 'Generate Quote' button
@@ -25,7 +24,7 @@
       // Display the random quote on the screen
       generatedQuoteTextElement.textContent = randomQuote.text;
       generatedQuoteAuthorElement.textContent = randomQuote.author;
-      generatedQuoteIdElement.textContent = randomQuote.id;
+      generatedQuoteTextElement.dataset.quoteId = randomQuote.id;
 
     } catch (error) {
       console.error(error);
@@ -43,7 +42,7 @@
   saveQuoteButton.addEventListener('click', async () => {
     try {
       // Get the generated quote text and author from the DOM
-      const generatedQuoteId = generatedQuoteIdElement.textContent;
+      const generatedQuoteId = generatedQuoteTextElement.dataset.quoteId;
 
       // Make a POST request to the '/userquotes' endpoint to save the generated quote as UserQuote
       const response = await fetch('/api/quotes', {
