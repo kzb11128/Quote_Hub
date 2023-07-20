@@ -12,7 +12,6 @@
       </div>
       <p class="text-sm text-gray-700 mt-4">New to Quote Hub? <a href="view/newaccount.handlebars" class="text-blue-500 hover:underline">Sign up</a></p>
     </div>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
       <div class="quote-container w-full md:w-auto mt-6 md:mt-0">
         <div class="quote-item">
             <p class="text-3xl">"Success is not final, failure is not fatal: It is the courage to continue that counts."</p>
@@ -42,3 +41,30 @@
       </div>
     </div>
   </div>
+
+   <style>
+    .quote-container {
+      position: relative;
+      width: 200px;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .quote-item {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 500ms ease-in-out;
+    }
+
+    .quote-item.active {
+      opacity: 1;
+    }
+  </style>
