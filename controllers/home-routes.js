@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 });
 
 // Request to login on homepage
-router.post('/', async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
     
@@ -31,15 +31,18 @@ router.post('/', async (req, res) => {
       res.status(400).json({message: 'Invalid email or password, retry!'});
       return;
     }
-
+    
     req.session.save(() => {
+      console.log("check login");
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.render('login', { user: userData.id, logged_in: true });
+      res.status(200).json("login successful");
+      
     });
 
   } catch (err) {
+    console.log("Catch Error");
     res.status(400).json(err);
   }
 });
