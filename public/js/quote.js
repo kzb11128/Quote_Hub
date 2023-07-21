@@ -10,7 +10,7 @@
   generateQuoteButton.addEventListener('click', async () => {
     try {
       // Make a GET request to the '/quotes' endpoint to fetch all quotes
-      const response = await fetch('/quotes');
+      const response = await fetch('/api/quotes');
 
       if (!response.ok) {
         throw new Error('Failed to fetch quotes.');
@@ -22,7 +22,7 @@
       const randomQuote = getRandomQuote(quotes);
 
       // Display the random quote on the screen
-      generatedQuoteTextElement.textContent = randomQuote.text;
+      generatedQuoteTextElement.textContent = randomQuote.quote_text;
       generatedQuoteAuthorElement.textContent = randomQuote.author;
       generatedQuoteTextElement.dataset.quoteId = randomQuote.id;
 

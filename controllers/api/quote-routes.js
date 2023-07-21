@@ -26,7 +26,7 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 //render a quote by its id
-router.get('/quote/:id', withAuth, async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
   try {
     const quoteData = await Quote.findByPk(req.params.id);
 
@@ -42,5 +42,18 @@ router.get('/quote/:id', withAuth, async (req, res) => {
   }
 });
 
+router.get('/', withAuth, async (req, res) => {
+  try {
+    const quoteData = await Quote.findAll();
+
+    const quotesData = quoteData.map((quote) => quote.get({ plain: true }));
+    console.log(quotesData);
+    res.json(quotesData);
+  
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
