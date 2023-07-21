@@ -8,7 +8,7 @@ const loginFormHandler = async (event) => {
 
   if(email && password) {
       //send a POST request to the API endpoint
-      const response = await fetch("/", {
+      const response = await fetch("/login", {
           method: "POST",
           body: JSON.stringify({ email, password}),
           headers: { "Content-Type": "application/json"},
@@ -19,7 +19,9 @@ const loginFormHandler = async (event) => {
       }else{
           alert(response.statusText);
       }
-  }
+  } else {
+      alert("Please enter a valid email and password");    
+  } 
 };
 
 const signupFormHandler = async (event) => {
