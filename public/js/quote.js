@@ -4,6 +4,7 @@
   const generatedQuoteTextElement = document.querySelector('#random-quote-text');
   const generatedQuoteAuthorElement = document.querySelector('#random-quote-author');
   const savedQuotesContainer = document.querySelector('#saved-quote-container');
+  const clearButton = document.querySelector('#clearbtn-saved-quotes');
 
 
   // Add an event listener to the 'Generate Quote' button
@@ -59,7 +60,17 @@
 
         // Display the saved quote in the 'saved-quotes-container'
         const savedQuoteElement = document.createElement('div');
-        savedQuoteElement.innerHTML = `<p>${savedQuoteData.quote_text}</p><p>${savedQuoteData.author}</p>`;
+        savedQuoteElement.innerHTML = `
+        <div class="block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+          <h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+            ${savedQuoteData.author}
+          </h5>
+          <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+            ${savedQuoteData.quote_text}
+          </p>
+        </div>
+      `;
+        // savedQuoteElement.innerHTML = `<p>${savedQuoteData.quote_text}</p><p>${savedQuoteData.author}</p>`;
         savedQuotesContainer.appendChild(savedQuoteElement);
       } else {
         const data = await response.json();
@@ -68,5 +79,25 @@
     } catch (error) {
       console.error(error);
       alert('An error occurred while saving the quote.');
+    }
+  });
+
+  clearButton.addEventListener('click', async () => {
+    try {
+      const response = await fetch('/api/quotes', {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        console.log('User quotes cleared successfully');
+        while (savedQuotesContainer.firstChild) {
+          savedQuotesContainer.removeChild(savedQuotesContainer.firstChild);
+        }
+      } else {
+        const errorData = await response.json();
+        console.log('Error:', errorData.message);
+      }
+    } catch (err) {
+      console.log('Error:', err.message);
     }
   });

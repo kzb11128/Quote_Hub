@@ -56,4 +56,23 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
+// Delete all user quotes related to the logged-in user
+router.delete('/', withAuth, async (req, res) => {
+  try {
+    const user_id = req.session.user_id;
+
+    // Find and delete all user quotes related to the logged-in user
+    await UserQuote.destroy({
+      where: {
+        user_id
+      },
+    });
+
+    res.status(200).json({ message: 'User quotes deleted' });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
