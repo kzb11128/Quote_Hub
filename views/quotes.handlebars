@@ -1,21 +1,26 @@
 <div id="random-quote-container" class="container mx-auto">
   <div id="container mx-auto">
-    <h2 class="text-4xl mb-6">Brighten your day with a random quote!</h2>
+    <h2
+      class="text-4xl mt-10 mb-6 flex justify-center"
+      style="font-family: 'Palanquin Dark', sans-serif;"
+    >Brighten your day with a quote!</h2>
   </div>
-  <div
-    class="block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"
+  <section
+    class="card block mb-5 rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"
   >
     <h5
       id="random-quote-author"
       class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50"
+      style="font-family:  'Libre Baskerville', serif;"
     >
     </h5>
-    <textarea
+    <p
       id="random-quote-text"
-      class="mb-4 text-base text-neutral-600 dark:text-neutral-200"
+      class="mb-2 text-base font-medium leading-tight text-neutral-600 dark:text-neutral-50"
+      style="font-family:  'Libre Baskerville', serif;"
     >
-    </textarea>
-  </div>
+    </p>
+  </section>
 </div>
 
 <!-- Buttons section for get and save quotes -->
@@ -26,50 +31,33 @@
   <!-- Get random quote button -->
   <button
     id="getbtn-random-quote"
-    class="btns bg-gray-300 hover:bg-green-500 text-gray-800 shadow-md shadow-[#542745]/40 mt-3 font-bold py-2 px-4 rounded"
+    class="btns bg-gray-300 text-gray-800 shadow-md shadow-[#542745]/40 mt-3 font-bold py-2 px-4 border border-sky-950 rounded"
   >Get a Quote</button>
   <!-- Save a random quote -->
   <button
     id="savebtn-random-quote"
-    class="btns bg-gray-300 shadow-md shadow-[#542745]/40 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mt-3"
+    class="btns bg-gray-300 text-gray-800 shadow-md shadow-[#542745]/40 mt-3 font-bold py-2 px-4 border border-sky-950 rounded"
   >Save Quote</button>
+  <button
+    id="clearbtn-saved-quotes"
+    class="btns bg-gray-300 text-gray-800 shadow-md shadow-[#542745]/40 mt-3 font-bold py-2 px-4 border border-sky-950 rounded"
+  >Clear Saved Quotes</button>
+  <button
+    id="logout"
+    class="btns bg-gray-300 text-gray-800 shadow-md shadow-[#542745]/40 mt-3 font-bold py-2 px-4 border border-sky-950 rounded"
+  >logout</button>
 </section>
 
+<div class="container mx-auto">
+  <h2
+    class="text-4xl my-8 flex justify-center"
+    style="font-family: 'Palanquin Dark', sans-serif;"
+  >Saved Quotes</h2>
+
+</div>
 <div id="saved-quote-container" class="container mx-auto">
-  <div id="container mx-auto">
-    <h2 class="text-4xl mb-6">Saved Quotes</h2>
-  </div>
-  <!-- For each quote in the array of quote objects -->
-  <div
-    class="block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"
-  >
-    {{#each quotes as |quote|}}
-      <h5
-        id="saved-quote-author"
-        class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50"
-      >
-        {{quote.author}}
-      </h5>
-      <p
-        id="saved-quote-text"
-        class="mb-4 text-base text-neutral-600 dark:text-neutral-200"
-      >
-        {{quote.quote_text}}
-      </p>
-    {{/each}}
-  </div>
 </div>
 
-<section
-  id="buttons"
-  class="flex flex-wrap justify-center text-sm md:text-base my-4 space-x-4"
->
-  <div class="clear saved quotes">
-    <button
-      id="clearbtn-saved-quotes"
-      class="btns bg-gray-300 shadow-md shadow-[#542745]/40 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mt-3"
-    >Clear Saved Quotes</button>
-  </div>
-</section>
-
 <script src="./js/quote.js"></script>
+
+<script src="/js/logout.js"></script>
