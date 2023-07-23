@@ -15,33 +15,16 @@
         </form>
         <p class="text-sm text-gray-700 mt-4">New to Quote Hub? <a href="/newaccount" class="text-blue-500 hover:underline">Sign up</a></p>
       </div>
+      
       <div class="quote-container w-full md:w-auto mt-6 md:mt-0">
+        {{#each quotes}}
         <div class="quote-item">
-            <p class="text-3xl">"Success is not final, failure is not fatal: It is the courage to continue that counts."</p>
-            <p class="text-2xl">- Winston Churchill</p>
-          </div>
-          
-          <div class="quote-item">
-            <p class="text-3xl">"The only limit to our realization of tomorrow will be our doubts of today."</p>
-            <p class="text-2xl">- Franklin D. Roosevelt</p>
-          </div>
-          
-          <div class="quote-item">
-            <p class="text-3xl">"In the end, it's not the years in your life that count. It's the life in your years."</p>
-            <p class="text-2xl">- Abraham Lincoln</p>
-          </div>
-          
-          <div class="quote-item">
-            <p class="text-3xl">"The future belongs to those who believe in the beauty of their dreams."</p>
-            <p class="text-2xl">- Eleanor Roosevelt</p>
-          </div>
-          
-          <div class="quote-item">
-            <p class="text-3xl">"Your time is limited, don't waste it living someone else's life."</p>
-            <p class="text-2xl">- Steve Jobs</p>
-          </div>
-          
+          <p class="text-3xl">{{quote_text}}</p>
+          <p class="text-2xl">- {{author}}</p>
+        </div>
+        {{/each}}
       </div>
+    
     </div>
   </div>
 
