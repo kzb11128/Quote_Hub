@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { User, Quote, UserQuote } = require('../models');
 const withAuth = require('../utils/auth');
-
 // Retrieve all quotes from the database
 router.get('/', async (req, res) => {
   try {
@@ -70,15 +69,30 @@ router.get('/newaccount', async (req, res) => {
 // Profile page should get all user quotes from the database
 router.get('/profile', withAuth, async (req, res) => {
   try {
-    const userQuoteData = await UserQuote.findAll({ 
+    const userQuoteIdData = await UserQuote.findAll({ 
       where: { 
         user_id: req.session.user_id 
       },
     });
-    
+
     const userData = await User.findByPk(req.session.user_id);
     
-    const userQuotes = userQuoteData.map((quote) => quote.get({ plain: true }));
+    const userQuoteIds = userQuoteIdData.map((quote) => quote.get({ plain: true }));
+    
+    console.log(userQuoteIds, 'userQuoteIds');
+
+    const quoteList = userQuoteIds.map(e => e.quote_id);
+
+    console.log(quoteList)
+    const quotes = await Quote.findAll({
+      where: {
+        id: quoteList,
+      }
+    });
+
+    const userQuotes = quotes.map((quote) => quote.get({ plain: true }));
+    
+
     const user = userData.get({ plain: true });
 
     res.render('quotes', { user, userQuotes, logged_in: req.session.logged_in });

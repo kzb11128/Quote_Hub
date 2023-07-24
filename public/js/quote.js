@@ -72,6 +72,7 @@ saveQuoteButton.addEventListener("click", async () => {
       `;
       // savedQuoteElement.innerHTML = `<p>${savedQuoteData.quote_text}</p><p>${savedQuoteData.author}</p>`;
       savedQuotesContainer.appendChild(savedQuoteElement);
+      document.location.replace("/profile");
     } else {
       const data = await response.json();
       alert(`Error: ${data.error}`);
@@ -93,6 +94,8 @@ clearButton.addEventListener("click", async () => {
       while (savedQuotesContainer.firstChild) {
         savedQuotesContainer.removeChild(savedQuotesContainer.firstChild);
       }
+      // Refreshes page
+      document.location.replace("/profile");
     } else {
       const errorData = await response.json();
       console.log("Error:", errorData.message);
