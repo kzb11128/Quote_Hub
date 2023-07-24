@@ -14,6 +14,8 @@ UserQuote.init(
     },
     user_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
       references: {
         model: 'user',
         key: 'id',
@@ -21,6 +23,8 @@ UserQuote.init(
     },
     quote_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true,
       references: {
         model: 'quote',
         key: 'id',

@@ -19,7 +19,7 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-
+ 
   const userQuotes = await UserQuote.bulkCreate([
     { user_id: users[0].id, quote_id: quotes[0].id },
     { user_id: users[0].id, quote_id: quotes[1].id },
