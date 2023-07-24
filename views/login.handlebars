@@ -19,7 +19,7 @@
       <div class="quote-container w-full md:w-auto mt-6 md:mt-0">
         {{#each quotes}}
         <div class="quote-item">
-          <p class="text-3xl">{{quote_text}}</p>
+          <p class="text-2xl w-96 break-words">{{quote_text}}</p>
           <p class="text-2xl">- {{author}}</p>
         </div>
         {{/each}}
@@ -31,19 +31,20 @@
   <style>
     .quote-container {
       position: relative;
-      width: 200px;
-      height: 400px;
+      width: 500px;
+      height: 300px;
       overflow: hidden;
+      margin-top:100px;
     }
 
     .quote-item {
       opacity: 0;
       position: absolute;
-      top: 0;
+      top: 100;
       left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
+      width: 50%;
+      height: 50%;
+      display: flex-wrap;
       flex-direction: column;
       justify-content: center;
       align-items: center;
